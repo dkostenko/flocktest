@@ -16,6 +16,6 @@
       logger/wrap-with-logger))
 
 (defn start-server
-  "start new server instance"
+  "Start listening"
   [port]
   (jetty/run-jetty app {:port port}))
