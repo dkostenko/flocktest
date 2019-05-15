@@ -12,7 +12,7 @@ $ lein uberjar
 ## Usage
 
 ```
-Usage: java -jar ./target/flocktest-1.0.0-standalone.jar [OPTIONS]
+Usage: java -jar ./target/flocktest-1.0.1-SNAPSHOT-standalone.jar [OPTIONS]
 or: lein run [OPTIONS]
 
 Options:

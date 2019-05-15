@@ -1,4 +1,4 @@
-(defproject flocktest "1.0.1"
+(defproject flocktest "1.0.1-SNAPSHOT"
   :description "Test task solution"
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [ring/ring-core "1.6.3"]

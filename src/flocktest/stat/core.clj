@@ -38,6 +38,7 @@
     (map :link (:entries (:feed x)))))
 
 ; TODO replace double-space in query.
+; TODO remove empty strings.
 (defn- prepare-queries
   "Clean each query string (trim, make lowercase, make unique)"
   [queries]
