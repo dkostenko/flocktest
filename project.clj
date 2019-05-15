@@ -1,4 +1,4 @@
-(defproject flocktest "1.0.0"
+(defproject flocktest "1.0.1"
   :description "Test task solution"
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [ring/ring-core "1.6.3"]
@@ -10,5 +10,6 @@
                  [cheshire "5.8.1"]
                  [ring-logger "1.0.1"]
                  [org.clojars.scsibug/feedparser-clj "0.4.0" :exlusions [org.clojure/clojure]]
-                 [com.climate/claypoole "1.1.4"]]
+                 [com.climate/claypoole "1.1.4"]
+                 [remus "0.1.0-SNAPSHOT"]]
   :main flocktest.main)

@@ -5,15 +5,15 @@
   (:gen-class))
 
 (def ^:private cli-options
-  [["-port" "--port PORT" "Port number for public API"
+  [["-port" "--port PORT" "Port number for public API (default 3000)"
     :default 3000
     :parse-fn #(Integer/parseInt %)
-    :validate [#(< 0 % 0x10000) "Must be a number between 0 and 65536"]]
+    :validate [#(< 0 % 0x10000) "Must be a number between 1 and 65536"]]
 
-  ["-tpsize" "--tpsize SIZE" "Threadpool size"
+  ["-tpsize" "--tpsize SIZE" "Threadpool size (default 1)"
     :default 1
     :parse-fn #(Integer/parseInt %)
-    :validate [#(< 0 % 1000) "Must be a number between 0 and 1000"]]
+    :validate [#(< 0 % 1001) "Must be a number between 1 and 1000"]]
   ])
 
 (defn -main
@@ -21,5 +21,5 @@
   [& args]
   (let [opts (parse-opts args cli-options)]
     (do
-      (stat/set-pool-size (get-in opts [:options, :tpsize]))
+      (stat/init (get-in opts [:options, :tpsize]))
       (api/start-server (get-in opts [:options, :port])))))

@@ -26,5 +26,8 @@
         (if (vector? x) x (vector x))
         (stat/get-bing-domains-stat-by-queries x)
         (make-response 200 x))
-      (catch Exception e (make-response 500 "something went wrong please try again")))
+      (catch Exception e
+        (do
+          (println e)
+          (make-response 500 "something went wrong please try again"))))
     (make-response 500 "no query params")))
