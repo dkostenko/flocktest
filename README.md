@@ -20,6 +20,21 @@ Options:
   --tpsize                      Threadpool size (default 1)
 ```
 
+To get domains stat:
+
+```
+$ curl localhost:3000/search?query=clojure
+
+{
+  "clojure.org" : 2,
+  "wikipedia.org" : 2,
+  "reddit.com" : 1,
+  "cyberforum.ru" : 2,
+  "ibm.com" : 1,
+  "alexott.net" : 2
+}
+```
+
 ## TODO / Roadmap
 
 * Fix TODOs in source code
