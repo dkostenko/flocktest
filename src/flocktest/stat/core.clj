@@ -6,15 +6,7 @@
             [clojure.set :as set]))
 
 (def ^:private pool (atom nil))
-(def ^:private poolsize (atom 1))
 (def ^:private cached-bing-cookies (atom nil))
-
-(defn- get-or-create-threadpool
-  "Return or create and return new threadpool"
-  []
-  (if-let [pl @pool]
-    pl
-    (reset! pool (cp/threadpool @poolsize))))
 
 (defn- make-bing-rss-url
   "Return bing rss url"
@@ -53,12 +45,12 @@
   ; It's a hack: bing.com doesn't return entries without cookies,
   ; that's why it's needed to get and cache cookies in init function.
   (reset! cached-bing-cookies (:cookies (:response (parse-url (make-bing-rss-url 1 "cookies")))))
-  (reset! poolsize size))
+  (reset! pool (cp/threadpool size)))
 
 (defn get-bing-domains-stat-by-queries
   "Return domains histogram as map from bing RSS feed"
   [queries]
-  (let [pool (get-or-create-threadpool)
+  (let [pool @pool
         cookies @cached-bing-cookies]
     (as-> queries x
       (prepare-queries x)
